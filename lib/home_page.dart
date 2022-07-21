@@ -129,7 +129,7 @@ class _HomePageState extends State<HomePage> {
 
             ///Result
             const Center(
-              child: Text('For better result please run the code and check in console.'),
+              child: Text('For better result please run the code and check in console. It looks with red mark. But Not support in widgets.'),
             )
           ],
         ),
