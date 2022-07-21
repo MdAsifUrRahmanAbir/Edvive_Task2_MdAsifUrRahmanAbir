@@ -22,22 +22,28 @@ class _HomePageState extends State<HomePage> {
 
 
   ///Prints every property for every [WritingMistake] passed.
-  void printDetails(List<WritingMistake> result) {
-    for (var mistake in result) {
-      print('''
-        Issue: ${mistake.message}
-        IssueType: ${mistake.issueDescription}
-        positioned at: ${mistake.offset}
-        with the lengh of ${mistake.length}.
-        Possible corrections: ${mistake.replacements}
-    ''');
-    }
-  }
+  // void printDetails(List<WritingMistake> result) {
+  //   for (var mistake in result) {
+  //     print('''
+  //       Issue: ${mistake.message}
+  //       Issue Type: ${mistake.issueDescription}
+  //       positioned at: ${mistake.offset}
+  //       with the length of ${mistake.length}.
+  //       Possible corrections: ${mistake.replacements}
+  //   ''');
+  //   }
+  //
+  // }
 
-  /// prints the given [sentence] with all mistakes marked red.
+  /// prints the given [sentence] with all mistakes marked red. but red mark only in console
   void markMistakes(List<WritingMistake> result, String sentence) {
+    ///it gives the mistake red color but not working in widget, for check remove its comment and look in print result
     var red = '\u001b[31m';
     var reset = '\u001b[0m';
+
+    ///for showing in app
+    // var red = '[';
+    // var reset = ']';
 
     var addedChars = 0;
 
@@ -64,9 +70,9 @@ class _HomePageState extends State<HomePage> {
     var result = await tool.check(userInput);
     markMistakes(result, userInput);
 
-    // Logic check.
-    result = await tool.check(userInput);
-    printDetails(result);
+    /// Logic check.
+    // result = await tool.check(userInput);
+    // printDetails(result);
   }
 
 
@@ -106,7 +112,7 @@ class _HomePageState extends State<HomePage> {
             ),
             const SizedBox(height: 10,),
 
-            // translate button
+            /// translate button
             MaterialButton(
                 height: 50,
                 color: Colors.blue,
@@ -114,15 +120,17 @@ class _HomePageState extends State<HomePage> {
                     borderRadius: BorderRadius.circular(8),
                     side: const BorderSide(color: Colors.blue,)
                 ),
-                child: const Text('Translate', style: TextStyle(color: Colors.white, fontSize: 20 )),
+                child: const Text('Check', style: TextStyle(color: Colors.white, fontSize: 20 )),
                 onPressed: (){
                   mistakeCheckes();
-                }),
+                }
+            ),
+            const SizedBox(height: 10,),
 
-            // Result
-            // const SizedBox(height: 10,),
-            // Center(child: Text('$resultInput', style: const TextStyle(color: Colors.black, fontSize: 20 ))),
-
+            ///Result
+            const Center(
+              child: Text('For better result please run the code and check in console.'),
+            )
           ],
         ),
       ),
